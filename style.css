@@ -1,0 +1,19 @@
+body {
+  background-color: #b1c58a;
+  color: #232733;
+}
+table thead {
+  background-color: #302b63;
+  color: white;
+}
+
+pre {
+  background-color: #444444;
+  color: blanchedalmond;
+  border-radius: 0.5rem;
+}
+
+code {
+  font-weight: 200;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}

@@ -11,18 +11,9 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
-
+    <link rel="stylesheet" href="style.css">
     <title>Uso de Fetch</title>
-    <style>
-      body {
-        background-color: #b1c58a;
-        color: #232733;
-      }
-      table thead {
-        background-color: #302b63;
-        color: white;
-      }
-    </style>
+    
   </head>
   <body>
     <div class="container mt-4 shadow-lg p3 mb-5 bg-body rounded">
@@ -53,11 +44,80 @@
           red... esta es la definición básica con la que vamos a trabajar....
           recuerden que las peticiones utilizando el protocolo http son las
           siguientes son:
-          <li>-Get</li>
-          <li>-Post</li>
-          <li>-Put</li>
-          <li>-Delete</li>
-          <li>-Patch</li>
+          <li>-Get: Para traer datos</li>
+          <p>Ejemplo</p>
+          <!--inicio de bloque de codigo-->
+          <pre><code class="hljs">fetch('https://pokeapi.co/api/v2/pokemon')
+         .then(response => response.json()) 
+          .then(data => console.log(data))</code></pre>
+          <!--fin bloque de codigo-->
+          <li>-Post: Es para enviar datos</li>
+          <p>Ejemplo</p>
+          <!--inicio de bloque de codigo-->
+<pre><code class="hljs">const profile= { 
+    username: "Jonathan",
+    email: "jonathan@gmail.com",
+    password: "123456"
+}
+fetch('https://mi-red-social/perfil', {
+    method: "POST",
+    body: JSON.stringify(profile),
+    headers: { 
+        "Content-type" : "application/json"
+    }
+})
+.then(response => response.json())
+.then(data => console.log(data))</code></pre>
+<!--fin bloque de codigo-->
+
+          <li>-Put: Es para actualizar datos</li>
+          <p>Ejemplo</p>
+          <!--inicio de bloque de codigo-->
+<pre><code class="hljs">const profile= { 
+    username: "Jonathan",
+    email: "jonathan@gmail.com"
+}
+fetch('https://mi-red-social/perfil', {
+    method: "PUT",
+    body: JSON.stringify(profile),
+    headers: { 
+        "Content-type" : "application/json"
+    }
+})
+.then(response => response.json())
+.then(data => console.log(data))</code></pre>
+<!--fin bloque de codigo-->
+          
+          <li>-Delete: Para borrar datos</li>
+          <p>Ejemplo</p>
+          <!--inicio de bloque de codigo-->
+<pre><code class="hljs">const imageID = 24;
+fetch(`http://instagram/imagenes/${imageID}`, {
+    method: "DELETE",
+    headers: {
+        "Content-Type" : "application/json"
+    }
+})
+.then(response => response.json())
+.then(data => console.log(data))</code></pre>
+<!--fin bloque de codigo-->
+
+          <li>-Patch: Es para editar datos</li>
+          <p>Ejemplo</p>
+          <!--inicio de bloque de codigo-->
+<pre><code class="hljs">const userID = 1;
+fetch(`http://google/cuenta/editar/${userID}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+        phone_number: "555-555-5555"
+    }),
+    headers: {
+        "Content-Type" : "application/json"
+    }
+})
+.then(response => response.json())
+.then(data => console.log(data))</code></pre>
+<!--fin bloque de codigo-->
           Y otras más.... <br />
           Pero las más utilizadas son las que les acabo de comentar... en este
           caso vamos a utilizar <strong>GET</strong> es decir vamos a obtener
@@ -82,7 +142,7 @@
           Promesa. Representa el resultado de una operación asíncrona.
           <br />
           <br />
-          Async/Await. Azúcar sintáctico para manejar promesas de una forma más
+          Async/Await. <a href="https://es.wikipedia.org/wiki/Az%C3%BAcar_sint%C3%A1ctico">Azúcar sintáctico</a> para manejar promesas de una forma más
           simple.)
           <br />
           <br />
@@ -92,14 +152,11 @@
           de la petición a realizar:
           <br />
           // Realizamos la petición y guardamos la promesa
-          <code style="color: white">
+          <pre><code>
             <br />
-            const request = fetch("/robots.txt");</code
-          >
-          <br />
+            const request = fetch("/robots.txt");</code></pre>
           // Si es resuelta, entonces ejecuta esta función...
-          <br />
-          <code style="color: white">(function(response) { ... });</code>
+          <pre><code>(function(response) { ... });</code></pre>
 
           <br />
           El fetch() devolverá una que será aceptada cuando reciba una respuesta
@@ -126,29 +183,6 @@
     ></script>
     <!--___________________________-->
 
-    <script>
-      let url = "https://jsonplaceholder.typicode.com/users"; //en la primera parte definimos una variable un
-      //url donde hacemos referencia al origen de los datos
-
-      fetch(url) //en la segunda línea realizamos una solicitud a esta url
-        .then((response) => response.json()) //en la tercera línea se resuelve la promesa al obtener la respuesta la pasa a un
-        //determinado formato utilizando la función correspondiente.. en este caso estamos utilizando json
-
-        .then((data) => mostrarData(data)) //en la cuarta línea leemos este objeto data y lo mostramos por consola
-
-        .catch((error) => console.log(error)); //por último en cinco si hay un error será atrapado con la palabra reservada catch
-
-      const mostrarData = (data) => {
-        //Se traen los datos
-        console.log(data);
-        let body = "";
-        for (let i = 0; i < data.length; i++) {
-          //vamos a utilizar un bucle for
-          //porque sabemos de que esa data va a tener una longitud en este caso es un arreglo de 10 ELEMENTOS
-          body += `<tr><td>${data[i].id}</td><td>${data[i].name}</td><td>${data[i].email}</td></tr>`;
-        }
-        document.getElementById("data").innerHTML = body; // Con esta linea graficamos lo de la linea 85 en el ID "data" de
-      }; //la linea 37.. En cada iteracion del bucle se va creando lo estipulado
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
