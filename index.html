@@ -11,40 +11,34 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <title>Uso de Fetch</title>
-    
   </head>
   <body>
-   
-
-    <div>
-      <div
-        style="
-          font-weight: 600;
-          font-size: larger;
-          width: 80%;
-          margin-left: 7rem;
-        "
-      >
-      <h1> Fetch API</h1>
+    <div class="padre">
+      <div class="hijo">
+        <div class="img">
+        <h1>Fetch API</h1>
         <p class="lead">
           Para qué sirve Fetch es una API de javascript que a través de su
           interfaz permite realizar peticiones http para obtener recursos de
           red... esta es la definición básica con la que vamos a trabajar....
           recuerden que las peticiones utilizando el protocolo http son las
           siguientes:
+          </div>
           <li>-Get: Para traer datos</li>
-          <p class="lead">Ejemplo:</p>
-          <!--inicio de bloque de codigo-->
-          <pre><code><span class="palabras-rojo">fetch</span><span class="signos-verde">('</span>https://pokeapi.co/api/v2/pokemon')
+        </p>
+
+        <p class="lead">Ejemplo:</p>
+        <!--inicio de bloque de codigo-->
+        <pre><code><span class="palabras-rojo">fetch</span><span class="signos-verde">('</span>https://pokeapi.co/api/v2/pokemon')
          .then(response => response.json()) 
           .then(data => console.log(data))</code></pre>
-          <!--fin bloque de codigo-->
-          <li>-Post: Es para enviar datos</li>
-          <p class="lead">Ejemplo:</p>
-          <!--inicio de bloque de codigo-->
-<pre><code>const profile= { 
+        <!--fin bloque de codigo-->
+        <li>-Post: Es para enviar datos</li>
+        <p class="lead">Ejemplo:</p>
+        <!--inicio de bloque de codigo-->
+        <pre><code>const profile= { 
     username: "Jonathan",
     email: "jonathan@gmail.com",
     password: "123456"
@@ -58,12 +52,12 @@ fetch('https://mi-red-social/perfil', {
 })
 .then(response => response.json())
 .then(data => console.log(data))</code></pre>
-<!--fin bloque de codigo-->
+        <!--fin bloque de codigo-->
 
-          <li>-Put: Es para actualizar datos</li>
-          <p class="lead">Ejemplo:</p>
-          <!--inicio de bloque de codigo-->
-<pre><code>const profile= { 
+        <li>-Put: Es para actualizar datos</li>
+        <p class="lead">Ejemplo:</p>
+        <!--inicio de bloque de codigo-->
+        <pre><code>const profile= { 
     username: "Jonathan",
     email: "jonathan@gmail.com"
 }
@@ -76,12 +70,12 @@ fetch('https://mi-red-social/perfil', {
 })
 .then(response => response.json())
 .then(data => console.log(data))</code></pre>
-<!--fin bloque de codigo-->
-          
-          <li>-Delete: Para borrar datos</li>
-          <p class="lead">Ejemplo:</p>
-          <!--inicio de bloque de codigo-->
-<pre><code>const imageID = 24;
+        <!--fin bloque de codigo-->
+
+        <li>-Delete: Para borrar datos</li>
+        <p class="lead">Ejemplo:</p>
+        <!--inicio de bloque de codigo-->
+        <pre><code>const imageID = 24;
 fetch(`http://instagram/imagenes/${imageID}`, {
     method: "DELETE",
     headers: {
@@ -90,12 +84,12 @@ fetch(`http://instagram/imagenes/${imageID}`, {
 })
 .then(response => response.json())
 .then(data => console.log(data))</code></pre>
-<!--fin bloque de codigo-->
+        <!--fin bloque de codigo-->
 
-          <li>-Patch: Es para editar datos</li>
-          <p class="lead">Ejemplo:</p>
-          <!--inicio de bloque de codigo-->
-<pre><code>const userID = 1;
+        <li>-Patch: Es para editar datos</li>
+        <p class="lead">Ejemplo:</p>
+        <!--inicio de bloque de codigo-->
+        <pre><code>const userID = 1;
 fetch(`http://google/cuenta/editar/${userID}`, {
     method: "PATCH",
     body: JSON.stringify({
@@ -107,17 +101,18 @@ fetch(`http://google/cuenta/editar/${userID}`, {
 })
 .then(response => response.json())
 .then(data => console.log(data))</code></pre>
-<!--fin bloque de codigo-->
-          Y otras más.... <br />
-          Pero las más utilizadas son las que les acabo de comentar... en este
-          caso vamos a utilizar <strong>GET</strong> es decir vamos a obtener
-          datos desde una api como vemos en la siguiente pagina
-          jsonplaceholder.com y vamos a mostrar datos... Este metodo representa
-          una alternativa más moderna a lo que sería xml http request.
+        <!--fin bloque de codigo-->
+        Y otras más.... <br />
+        <br />
+        Pero las más utilizadas son las que les acabo de comentar... en este
+        caso vamos a utilizar <strong>GET</strong> es decir vamos a obtener
+        datos desde una api como vemos en la siguiente pagina
+        jsonplaceholder.com y vamos a mostrar datos... Este metodo representa
+        una alternativa más moderna a lo que sería xml http request.
 
-          <br />
-          <br />
-          <pre><code>let url = "https://jsonplaceholder.typicode.com/users"; //en la primera parte definimos una variable un
+        <br />
+        <br />
+        <pre class="especial style="margin-right: 10rem"><code>let url = "https://jsonplaceholder.typicode.com/users"; //en la primera parte definimos una variable un
       //url donde hacemos referencia al origen de los datos
 
       fetch(url) //en la segunda línea realizamos una solicitud a esta url
@@ -141,69 +136,134 @@ fetch(`http://google/cuenta/editar/${userID}`, {
       }; //.. En cada iteracion del bucle se va creando lo estipulado
 </code></pre>
 
-      <div class="container mt-4 shadow-lg p3 mb-5 bg-body rounded">
-        <table class="table table-bordered table-striped">
-          <thead>
-           <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>EMAIL</th>
-          </tr>
-        </thead>
-        <tbody id="data"></tbody>
-        </table>
-     </div>
-          <br />
-          <br />
-          <br />
-          Fetch es el nombre de una nueva API para Javascript con la cuál
-          podemos realizar peticiones HTTP asíncronas (Los patrones asíncronos
-          más comunes en Javascript son:
-          <br />
-          <br />
+        <div class="container mt-4 shadow-lg p3 mb-5 bg-body rounded">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+              </tr>
+            </thead>
+            <tbody id="data"></tbody>
+          </table>
+        </div>
 
-          Función que se ejecuta cuando una operación asíncrona termina, como
-          resultado de la misma.
+        <br />
+        <br />
+        <div class="img">
+          <h2>Cheatsheet Fetch API: 9 de los mas comunes API Requests</h2>
           <br />
           <br />
-          Promesa. Representa el resultado de una operación asíncrona.
-          <br />
-          <br />
-          Async/Await. <a href="https://es.wikipedia.org/wiki/Az%C3%BAcar_sint%C3%A1ctico">Azúcar sintáctico</a> para manejar promesas de una forma más
-          simple.)
-          <br />
-          <br />
-          utilizando promesas y de forma que el código sea un poco más sencillo
-          y menos verbose. La forma de realizar una petición es muy sencilla,
-          básicamente se trata de llamar a fetch y pasarle por parámetro la URL
-          de la petición a realizar:
-          <br />
-          // Realizamos la petición y guardamos la promesa
-          <pre><code>
-            <br />
-            const request = fetch("/robots.txt");</code></pre>
-          // Si es resuelta, entonces ejecuta esta función...
-          <pre><code>(function(response) { ... });</code></pre>
+        </div>
+        <h3>Simple GET request with the Fetch API</h3>
 
-          <br />
-          El fetch() devolverá una que será aceptada cuando reciba una respuesta
-          y sólo será rechazada si hay un fallo de red o si por alguna razón no
-          se pudo completar la petición. El modo más habitual de manejar las
-          promesas es utilizando .then(). Esto se suele reescribir de la
-          siguiente forma, que queda mucho más simple:
-          <br />
-          <code style="color: white"
-            >fetch("/robots.txt")
-            <br />
-            .then(function(response) { /** Código que <br />
-            procesa la respuesta **/ });</code
-          >
+        <pre><code>fetch('{url}') .then(response =>
+      console.log(response));</code></pre>
+        <br />
+        <br />
+        <h3>Simple POST request with the Fetch API</h3>
+
+        <pre><code>fetch('{url}', { method: 'post' }) 
+      .then(response =>
+      console.log(response)); </code></pre>
+        <br />
+        <br />
+        <h3>GET with an authorization token (Bearer) in the Fetch API fetch</h3>
+        <pre><code>('{url}', { headers: { 'Authorization': 'Basic {token}' }
+      }) 
+      .then(response => console.log(response)); </code></pre>
+        <br />
+        <br />
+        <h3>GET with querystring data in the Fetch API fetch</h3>
+        <pre><code>('{url}?var1=value1&var2=value2') .then(response =>
+      console.log(response));</code></pre>
+        <br /><br />
+        <h3>GET with CORS in the Fetch API</h3>
+
+        <pre><code>fetch'{url}', 
+        ({ mode: 'cors' }) 
+      .then(response => console.log(response));
+      </code></pre>
+        <br />
+        <br />
+
+        <h3>
+          POST with authorization token and querystring data in the Fetch API
+        </h3>
+
+        <pre><code>fetch('{url}?var1=value1&var2=value2', 
+          { method: 'post',
+        headers: {
+          'Authorization': 'Bearer {token}' }
+         }) 
+         .then(response =>
+      console.log(response));
+        </code></pre>
+        <br />
+        <br />
+        <h3>POST with form data in the Fetch API</h3>
+        <pre><code>let formData
+      = new FormData(); formData.append('field1', 'value1');
+      formData.append('field2', 'value2'); fetch('{url}', { method: 'post',
+      body: formData }) .then(response => console.log(response));</code></pre>
+        <br />
+        <br />
+        <h3>POST with JSON data in the Fetch API</h3>
+        <pre><code>fetch('{url}', { method: 'post', headers: {
+      'Content-Type': 'application/json' }, body: JSON.stringify({ 'field1':
+      'value1', 'field2': 'value2' }) }) .then(response =>
+      console.log(response));</code></pre>
+        <br /><br />
+        <h3>POST with JSON data and CORS in the Fetch API</h3>
+        <pre><code>fetch('{url}', { method: 'post', mode: 'cors', headers: { 'Content-Type':
+      'application/json' }, body: JSON.stringify({ 'field1': 'value1', 'field2':
+      'value2' }) }) .then(response => console.log(response));</code></pre>
+        <br /><br />
+        <h3>How to process the results of the Fetch API request</h3>
+        <p>
+          The Fetch API returns a Promise. Thatʼs why Iʼm always using .then()
+          and a callback function for processing the response:
+        </p>
+        <pre><code>fetch(...).then(response => { // process the response }</code></pre>
+        <p>But you can also await the result if youʼre in an async function:</p>
+        <pre><code class="lenguage-javascript">async function getData(){
+      let data = await fetch(...); // process the response }</code></pre>
+        <p>
+          Now letʼs take a look at how we can extract the data from the
+          response: How to check the status code of the Fetch API response When
+          sending POST, PATCH, and PUT requests, we are typically interested in
+          the return status code:
+        </p>
+        <pre><code>fetch(...) .then(response => { if (response.status == 200){ // all OK }
+      else { console.log(response.statusText); } });</code></pre>
+        <p>
+          How to get a simple value of the Fetch API response Some API endpoints
+          may send back an identifier of a new database record that was created
+          using your data:
+        </p>
+        <pre><code>var userId;
+      fetch(...) .then(response => response.text()) .then(id => { userId = id;
+      console.log(userId) });</code></pre>
+        <h3>How to convert JSON data of the Fetch API response</h3>
+        <p>But in most cases, youʼll receive JSON data in the response body:</p>
+        <pre><code>var
+      dataObj; fetch(...) .then(response => response.json()) .then(data => {
+      dataObj = data; console.log(dataObj) });</code></pre>
+        <p>
+          Keep in mind that you can access the data only after both Promises are
+          resolved. This is sometimes a bit confusing, so I always prefer to use
+          async methods and await the results:
+        </p>
+        <pre><code>async function getData(){ var dataObj; const response = await fetch(...);
+      const data = await response.json(); dataObj = data; console.log(dataObj);
+      }</code></pre>
+        <p>
+          Conclusion These samples should have you covered in most situations.
         </p>
       </div>
     </div>
-   
-    
-    
+
     <!--------Script Boostrap-------->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
