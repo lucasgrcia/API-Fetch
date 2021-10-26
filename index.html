@@ -16,18 +16,7 @@
     
   </head>
   <body>
-    <div class="container mt-4 shadow-lg p3 mb-5 bg-body rounded">
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>EMAIL</th>
-          </tr>
-        </thead>
-        <tbody id="data"></tbody>
-      </table>
-    </div>
+   
 
     <div>
       <div
@@ -38,23 +27,24 @@
           margin-left: 7rem;
         "
       >
-        <p>
+      <h1> Fetch API</h1>
+        <p class="lead">
           Para qué sirve Fetch es una API de javascript que a través de su
           interfaz permite realizar peticiones http para obtener recursos de
           red... esta es la definición básica con la que vamos a trabajar....
           recuerden que las peticiones utilizando el protocolo http son las
           siguientes son:
           <li>-Get: Para traer datos</li>
-          <p>Ejemplo</p>
+          <p class="lead">Ejemplo:</p>
           <!--inicio de bloque de codigo-->
-          <pre><code class="hljs">fetch('https://pokeapi.co/api/v2/pokemon')
+          <pre><code><span class="palabras-rojo">fetch</span><span class="signos-verde">('</span>https://pokeapi.co/api/v2/pokemon')
          .then(response => response.json()) 
           .then(data => console.log(data))</code></pre>
           <!--fin bloque de codigo-->
           <li>-Post: Es para enviar datos</li>
-          <p>Ejemplo</p>
+          <p class="lead">Ejemplo:</p>
           <!--inicio de bloque de codigo-->
-<pre><code class="hljs">const profile= { 
+<pre><code>const profile= { 
     username: "Jonathan",
     email: "jonathan@gmail.com",
     password: "123456"
@@ -71,9 +61,9 @@ fetch('https://mi-red-social/perfil', {
 <!--fin bloque de codigo-->
 
           <li>-Put: Es para actualizar datos</li>
-          <p>Ejemplo</p>
+          <p class="lead">Ejemplo:</p>
           <!--inicio de bloque de codigo-->
-<pre><code class="hljs">const profile= { 
+<pre><code>const profile= { 
     username: "Jonathan",
     email: "jonathan@gmail.com"
 }
@@ -89,9 +79,9 @@ fetch('https://mi-red-social/perfil', {
 <!--fin bloque de codigo-->
           
           <li>-Delete: Para borrar datos</li>
-          <p>Ejemplo</p>
+          <p class="lead">Ejemplo:</p>
           <!--inicio de bloque de codigo-->
-<pre><code class="hljs">const imageID = 24;
+<pre><code>const imageID = 24;
 fetch(`http://instagram/imagenes/${imageID}`, {
     method: "DELETE",
     headers: {
@@ -103,9 +93,9 @@ fetch(`http://instagram/imagenes/${imageID}`, {
 <!--fin bloque de codigo-->
 
           <li>-Patch: Es para editar datos</li>
-          <p>Ejemplo</p>
+          <p class="lead">Ejemplo:</p>
           <!--inicio de bloque de codigo-->
-<pre><code class="hljs">const userID = 1;
+<pre><code>const userID = 1;
 fetch(`http://google/cuenta/editar/${userID}`, {
     method: "PATCH",
     body: JSON.stringify({
@@ -174,7 +164,44 @@ fetch(`http://google/cuenta/editar/${userID}`, {
         </p>
       </div>
     </div>
+   
+    <h3></h3>
+    <pre><code>let url = "https://jsonplaceholder.typicode.com/users"; //en la primera parte definimos una variable un
+      //url donde hacemos referencia al origen de los datos
 
+      fetch(url) //en la segunda línea realizamos una solicitud a esta url
+        .then((response) => response.json()) //en la tercera línea se resuelve la promesa al obtener la respuesta la pasa a un
+        //determinado formato utilizando la función correspondiente.. en este caso estamos utilizando json
+
+        .then((data) => mostrarData(data)) //en la cuarta línea leemos este objeto data y lo mostramos por consola
+
+        .catch((error) => console.log(error)); //por último en cinco si hay un error será atrapado con la palabra reservada catch
+
+      const mostrarData = (data) => {
+        //Se traen los datos
+        console.log(data);
+        let body = "";
+        for (let i = 0; i < data.length; i++) {
+          //vamos a utilizar un bucle for
+          //porque sabemos de que esa data va a tener una longitud en este caso es un arreglo de 10 ELEMENTOS
+          body += `<tr><td>${data[i].id}</td><td>${data[i].name}</td><td>${data[i].email}</td></tr>`;
+        }
+        document.getElementById("data").innerHTML = body; // Con esta linea graficamos en linea donde se encuentra el ID "data" de
+      }; //.. En cada iteracion del bucle se va creando lo estipulado
+</code></pre>
+
+      <div class="container mt-4 shadow-lg p3 mb-5 bg-body rounded">
+        <table class="table table-bordered table-striped">
+          <thead>
+           <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+          </tr>
+        </thead>
+        <tbody id="data"></tbody>
+        </table>
+     </div>
     <!--------Script Boostrap-------->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
